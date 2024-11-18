@@ -22,10 +22,10 @@ class ProductEncoder:
         return [self.product_idx[pid] for pid in x]
 
     def toPid(self, x):
-        if type(x) == int:
+        if type(x) == np.int32:
             idx = x
             return self.product_pid[idx]
-        return [self.product_pid[idx] for idx in x]
+        return [self.product_pid[idx.item()] for idx in x]
 
     @property
     def num_products(self):
@@ -43,7 +43,7 @@ def make_coo_row(transaction_history, product_encoder: ProductEncoder):
 
     for pid in items:
         idx.append(product_encoder.toIdx(pid))
-        values.append(1.0 / n_items)
+        values.append(1.0)
 
     return sp.coo_matrix(
         (np.array(values).astype(np.float32), ([0] * len(idx), idx)), shape=(1, product_encoder.num_products),

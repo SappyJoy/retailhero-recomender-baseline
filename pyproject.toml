@@ -1,0 +1,34 @@
+[project]
+name = "retailhero-recomender-baseline"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Stepan Ponomarev", email = "stponomarevw@gmail.com" }
+]
+dependencies = [
+    "jupytext>=1.16.4",
+    "jupyter>=1.1.1",
+    "pandas>=2.2.3",
+    "numpy>=2.1.2",
+    "scipy>=1.14.1",
+    "tqdm>=4.66.5",
+    "implicit>=0.7.2",
+    "scikit-learn>=1.5.2",
+    "faiss-cpu>=1.9.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/retailhero_recomender_baseline"]
